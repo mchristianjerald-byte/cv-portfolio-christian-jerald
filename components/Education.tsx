@@ -1,66 +1,55 @@
-export default function Education() {
+﻿export default function Education() {
   return (
-    <section id="education" className="py-24 bg-gray-50">
-      <div className="max-w-5xl mx-auto px-6">
-        <p className="text-blue-600 font-medium text-sm tracking-widest uppercase mb-3">
-          Education
-        </p>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
+    <section id="education" className="py-32 bg-stone-50">
+      <div className="max-w-5xl mx-auto px-8 md:px-16">
+
+        {/* Section label */}
+        <div className="flex items-center gap-4 mb-16">
+          <span className="text-xs font-mono text-gray-300 tracking-widest">04 /</span>
+          <span className="flex-1 h-px bg-gray-200" />
+          <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">Education</span>
+        </div>
+
+        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-16">
           Academic Background
         </h2>
 
-        <div className="space-y-6">
-          {/* Degree */}
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
-              <div>
-                <h3 className="font-bold text-gray-900 text-lg">
-                  Bachelor of Science in Information Technology
-                </h3>
-                <p className="text-blue-600 font-medium">St. Paul University Philippines</p>
-              </div>
-              <span className="text-sm text-gray-500 bg-gray-50 border border-gray-100 px-3 py-1 rounded-full whitespace-nowrap">
-                In Progress
-              </span>
-            </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Studying core IT disciplines including software development, system analysis, databases,
-              networking, and emerging technologies. Focused on applying modern development practices
-              to real-world problems.
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 hover:border-indigo-200 transition-colors">
+            <span className="text-xs font-mono text-gray-300 uppercase tracking-widest mb-6 block">
+              In Progress
+            </span>
+            <h3 className="text-xl font-black text-gray-900 mb-1">
+              BS Information Technology
+            </h3>
+            <p className="text-indigo-600 font-mono text-sm mb-6">
+              St. Paul University Philippines
+            </p>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Core IT disciplines including software development, databases, networking,
+              systems analysis, and emerging technologies with a focus on practical application.
             </p>
           </div>
 
-          {/* Internship */}
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
-              <div>
-                <h3 className="font-bold text-gray-900 text-lg">
-                  Full-Stack AI Agent Development & MCP Server Architecture
-                </h3>
-                <p className="text-blue-600 font-medium">Ausbiz Consulting — AI Agent Developer Workshop</p>
-              </div>
-              <span className="text-sm text-gray-500 bg-blue-50 border border-blue-100 text-blue-600 px-3 py-1 rounded-full whitespace-nowrap">
-                2026 — Active
-              </span>
-            </div>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              10-week intensive internship covering Next.js 15, React 19, TypeScript, Prisma ORM,
-              Auth.js, MCP Server development, and production deployment. Building a professional
-              digital portfolio as the core deliverable.
+          <div className="bg-white border border-indigo-100 rounded-2xl p-8 hover:border-indigo-300 transition-colors">
+            <span className="text-xs font-mono text-indigo-400 uppercase tracking-widest mb-6 block">
+              Active — 2026
+            </span>
+            <h3 className="text-xl font-black text-gray-900 mb-1">
+              AI Agent Developer Internship
+            </h3>
+            <p className="text-indigo-600 font-mono text-sm mb-6">
+              Ausbiz Consulting
+            </p>
+            <p className="text-gray-500 text-sm leading-relaxed mb-6">
+              10-week intensive program covering Next.js 15, React 19, TypeScript, Prisma ORM,
+              Auth.js, and MCP Server development. Building a professional digital portfolio.
             </p>
             <div className="flex flex-wrap gap-2">
-              {[
-                "Next.js 15",
-                "React 19",
-                "Prisma ORM",
-                "Auth.js",
-                "MCP Protocol",
-                "Vercel",
-                "GitHub Copilot",
-              ].map((tag) => (
+              {["Next.js", "Prisma", "Auth.js", "MCP", "Vercel"].map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg font-medium"
+                  className="text-xs px-2.5 py-1 bg-indigo-50 text-indigo-600 rounded-lg font-mono"
                 >
                   {tag}
                 </span>

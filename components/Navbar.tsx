@@ -1,73 +1,105 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
+﻿"use client";
+import { useState, useEffect } from "react";
 
-const links = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
+const sections = [
+  { id: "hero", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Work" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("hero");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -40% 0px" }
+    );
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="#" className="font-bold text-gray-900 text-lg tracking-tight">
-          CJ Martinez
-        </Link>
+    <>
+      {/* Desktop: right-side vertical dot nav */}
+      <nav className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 z-50 flex-col gap-6">
+        {sections.map(({ id, label }) => (
+          <a key={id} href={"#" + id} className="group flex items-center gap-3">
+            <span
+              className={
+                "text-xs tracking-widest uppercase font-mono transition-all duration-300 " +
+                (active === id
+                  ? "opacity-100 text-indigo-600"
+                  : "opacity-0 text-gray-400 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0")
+              }
+            >
+              {label}
+            </span>
+            <span
+              className={
+                "block rounded-full transition-all duration-300 " +
+                (active === id
+                  ? "w-2.5 h-2.5 bg-indigo-600"
+                  : "w-1.5 h-1.5 bg-gray-300 group-hover:bg-gray-500 group-hover:w-2 group-hover:h-2")
+              }
+            />
+          </a>
+        ))}
+      </nav>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex gap-8">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-sm text-gray-600 hover:text-blue-600 transition-colors"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile toggle */}
+      {/* Mobile: top bar */}
+      <div className="lg:hidden fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 h-14 bg-white/90 backdrop-blur border-b border-gray-100">
+        <a href="#hero" className="text-sm font-black tracking-tight text-gray-900">
+          CJ.
+        </a>
         <button
-          className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900"
-          onClick={() => setOpen(!open)}
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {open ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          <span className="block w-5 h-px bg-gray-900 transition-all" />
+          <span
+            className={
+              "block h-px bg-gray-900 transition-all " + (menuOpen ? "w-5" : "w-3.5")
+            }
+          />
+          <span className="block w-5 h-px bg-gray-900 transition-all" />
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden border-t border-gray-100 bg-white px-6 py-4">
-          <ul className="flex flex-col gap-4">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-sm text-gray-700 hover:text-blue-600"
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </a>
-              </li>
+      {/* Mobile: full-screen overlay */}
+      {menuOpen && (
+        <div className="lg:hidden fixed inset-0 z-40 bg-white flex flex-col items-center justify-center">
+          <nav className="flex flex-col items-center gap-10">
+            {sections.map(({ id, label }, i) => (
+              <a
+                key={id}
+                href={"#" + id}
+                onClick={() => setMenuOpen(false)}
+                className="group flex flex-col items-center"
+              >
+                <span className="text-xs text-gray-300 font-mono mb-1">
+                  {"0" + (i + 1)}
+                </span>
+                <span className="text-4xl font-black text-gray-900 group-hover:text-indigo-600 transition-colors">
+                  {label}
+                </span>
+              </a>
             ))}
-          </ul>
+          </nav>
         </div>
       )}
-    </nav>
+    </>
   );
 }

@@ -1,50 +1,53 @@
-export default function About() {
+﻿export default function About() {
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="max-w-5xl mx-auto px-6">
-        <p className="text-blue-600 font-medium text-sm tracking-widest uppercase mb-3">
-          About Me
-        </p>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
-          Who I Am
-        </h2>
+    <section id="about" className="py-32 bg-white">
+      <div className="max-w-5xl mx-auto px-8 md:px-16">
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-5 text-gray-600 leading-relaxed">
-            <p>
-              I&apos;m a 3rd year Bachelor of Science in Information Technology student at{" "}
-              <span className="font-medium text-gray-900">St. Paul University Philippines</span>,
-              currently undergoing an internship in{" "}
-              <span className="font-medium text-gray-900">
-                Full-Stack AI Agent Development & MCP Server Architecture
-              </span>{" "}
-              with Ausbiz Consulting.
-            </p>
-            <p>
-              I&apos;m passionate about building AI-powered applications that bridge the gap between
-              traditional software development and modern AI agent systems. Through this program,
-              I&apos;m developing hands-on expertise in Next.js 15, React 19, TypeScript, and the
-              Model Context Protocol (MCP).
-            </p>
-            <p>
-              My focus is on understanding how AI agents can be integrated into production
-              applications — from building MCP servers to deploying full-stack apps with Vercel and
-              Neon Postgres.
-            </p>
+        {/* Section label */}
+        <div className="flex items-center gap-4 mb-16">
+          <span className="text-xs font-mono text-gray-300 tracking-widest">01 /</span>
+          <span className="flex-1 h-px bg-gray-100" />
+          <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">About</span>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-16 items-start">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-8">
+              Developer.<br />
+              <span className="text-indigo-600">Learner.</span><br />
+              Builder.
+            </h2>
+            <div className="space-y-4 text-gray-500 leading-relaxed text-sm">
+              <p>
+                I am a BSIT student at{" "}
+                <span className="text-gray-800 font-semibold">St. Paul University Philippines</span>,
+                currently interning in Full-Stack AI Agent Development at Ausbiz Consulting.
+              </p>
+              <p>
+                My focus is on bridging traditional software development with modern AI agent
+                systems — understanding how tools like the Model Context Protocol (MCP) enable
+                AI to interact with real-world data and APIs.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {[
               { label: "Program", value: "BSIT" },
               { label: "University", value: "St. Paul University Philippines" },
-              { label: "Internship", value: "AI Agent Developer" },
-              { label: "Focus", value: "Full-Stack + AI/MCP" },
-              { label: "GitHub", value: "mchristianjerald-byte" },
+              { label: "Role", value: "AI Agent Dev Intern" },
+              { label: "Focus", value: "Full-Stack + MCP" },
+              { label: "GitHub", value: "@mchristianjerald-byte" },
               { label: "Status", value: "Open to Opportunities" },
             ].map((item) => (
-              <div key={item.label} className="bg-gray-50 rounded-xl p-4">
-                <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">{item.label}</p>
-                <p className="text-sm font-medium text-gray-800">{item.value}</p>
+              <div
+                key={item.label}
+                className="border border-gray-100 rounded-xl p-4 hover:border-indigo-200 transition-colors"
+              >
+                <p className="text-xs font-mono text-gray-300 uppercase tracking-wide mb-2">
+                  {item.label}
+                </p>
+                <p className="text-sm font-semibold text-gray-800">{item.value}</p>
               </div>
             ))}
           </div>
