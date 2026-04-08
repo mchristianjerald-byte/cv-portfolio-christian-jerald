@@ -56,6 +56,16 @@ export default function Navbar() {
             />
           </a>
         ))}
+        {/* Person App link */}
+        <a
+          href="/persons"
+          className="group flex items-center gap-3 mt-2 pt-4 border-t border-gray-100"
+        >
+          <span className="text-xs tracking-widest uppercase font-mono text-gray-300 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            App
+          </span>
+          <span className="block w-1.5 h-1.5 rounded-sm bg-indigo-200 group-hover:bg-indigo-500 group-hover:w-2 group-hover:h-2 transition-all duration-300" />
+        </a>
       </nav>
 
       {/* Mobile: top bar */}
@@ -97,6 +107,16 @@ export default function Navbar() {
                 </span>
               </a>
             ))}
+            <a
+              href="/persons"
+              onClick={() => setMenuOpen(false)}
+              className="group flex flex-col items-center mt-4 pt-6 border-t border-gray-100 w-32"
+            >
+              <span className="text-xs text-gray-300 font-mono mb-1">App</span>
+              <span className="text-2xl font-black text-gray-400 group-hover:text-indigo-600 transition-colors">
+                Person App
+              </span>
+            </a>
           </nav>
         </div>
       )}
